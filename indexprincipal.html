@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Te Amo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      background: linear-gradient(to top, #ff9a9e, #fad0c4);
+      font-family: 'Great Vibes', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+    }
+
+    h1 {
+      color: white;
+      font-size: 8vw;
+      text-align: center;
+      text-shadow: 2px 2px 8px #ff3e55;
+      z-index: 2;
+      margin: 0 10px;
+    }
+
+    .corazon {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: flotar 8s linear infinite;
+      opacity: 0.8;
+    }
+
+    .corazon::before,
+    .corazon::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .corazon::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .corazon::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes flotar {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 10vw;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      h1 {
+        font-size: 5vw;
+      }
+    }
+  </style>
+</head>
+<body onclick="window.location.href='index.html'">
+  <h1>Haz clic, mi amor 💘</h1>
+
+  <script>
+    function lanzarCorazones() {
+      for (let i = 0; i < 30; i++) {
+        const corazon = document.createElement('div');
+        corazon.classList.add('corazon');
+        corazon.style.left = `${Math.random() * 100}vw`;
+        corazon.style.bottom = `-20px`;
+        corazon.style.animationDelay = `${Math.random() * 5}s`;
+        corazon.style.animationDuration = `${5 + Math.random() * 5}s`;
+        document.body.appendChild(corazon);
+      }
+    }
+
+    lanzarCorazones();
+  </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti, mi amor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    #mensaje {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4rem;
+      color: #d63384;
+      text-shadow: 2px 2px #fff;
+      display: none;
+      z-index: 2;
+      text-align: center;
+      padding: 0 20px;
+      word-break: break-word;
+    }
+
+    #ramo {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      z-index: 1;
+    }
+
+    #ramo:hover {
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    .corazon {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: flotar 10s linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    .corazon::before,
+    .corazon::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .corazon::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .corazon::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes flotar {
+      0% {
+        bottom: -10%;
+        left: calc(100% * var(--pos));
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        left: calc(100% * var(--pos) + 30px);
+        opacity: 0;
+      }
+    }
+
+    /* ✅ RESPONSIVE DESIGN PARA CELULARES */
+    @media (max-width: 600px) {
+      #mensaje {
+        font-size: 2.2rem;
+      }
+
+      #ramo {
+        width: 180px;
+        bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- VIDEO DE FONDO -->
+  <video id="bgVideo" autoplay muted loop playsinline>
+    <source src="video/pinterest-video-29.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <div id="mensaje">Te amo corazón de melón ❤️</div>
+  <img id="ramo" src="img/pngegg.png" alt="Ramo de Rosas Gigante" onclick="mostrarAmor()">
+
+  <audio autoplay loop>
+    <source src="audio/Aventura - Obsesión (ft. Judy Santos).mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <script>
+    function mostrarAmor() {
+      document.getElementById('mensaje').style.display = 'block';
+    }
+
+    function crearCorazones() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('corazon');
+        heart.style.setProperty('--pos', Math.random());
+        heart.style.animationDelay = `${Math.random() * 5}s`;
+        heart.style.left = `${Math.random() * 100}%`;
+        document.body.appendChild(heart);
+      }
+    }
+
+    crearCorazones();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Día de las Novias</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('/img/snoopy-y-pajarito-woodstock-emilio_3840x2160_xtrafondos.com.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 5rem;
+      color: #d63384;
+      margin-bottom: 20px;
+      animation: fadeInDown 2s ease forwards;
+      text-shadow: 2px 2px #fff;
+    }
+
+    p {
+      font-size: 1.5rem;
+      color: #6c757d;
+      max-width: 700px;
+      animation: fadeInUp 2.5s ease forwards;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 15px;
+      border-radius: 15px;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: floatHeart 8s linear infinite;
+      opacity: 0.8;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        bottom: -10%;
+        left: calc(100% * var(--pos));
+        opacity: 1;
+        transform: scale(0.8) rotate(45deg);
+      }
+      100% {
+        bottom: 110%;
+        left: calc(100% * var(--pos) + 50px);
+        opacity: 0;
+        transform: scale(1.2) rotate(60deg);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      background-color: #ff69b4;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      animation: fadeInUp 3s ease forwards;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+      transform: scale(1.05);
+    }
+
+    .flowers {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      background: url('https://i.imgur.com/m4b0Qk1.png') repeat-x;
+      background-size: contain;
+      animation: moveFlowers 20s linear infinite;
+    }
+
+    @keyframes moveFlowers {
+      from { background-position-x: 0; }
+      to { background-position-x: 1000px; }
+    }
+
+    /* ✅ RESPONSIVE PARA CELULARES */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+        padding: 12px;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+
+      .flowers {
+        height: 70px;
+        background-size: cover;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Feliz Día de las Novias</h1>
+  <p>Te amo con todo mi corazón cejitas, estando contigo me veo capaz de hacer cualquier cosa. 💕<br>
+  Eres mi inspiración, mi alegría y mi mejor regalo. 🌸</p>
+  <button onclick="location.href='index2.html'">Haz clic aquí</button>
+  <div class="flowers"></div>
+
+  <audio autoplay loop>
+    <source src="/audio/Ataquemos - Contigo (Sub. Español).mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <script>
+    function crearCorazones() {
+      for (let i = 0; i < 40; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.setProperty('--pos', Math.random());
+        heart.style.animationDelay = `${Math.random() * 5}s`;
+        heart.style.left = `${Math.random() * 100}%`;
+        document.body.appendChild(heart);
+      }
+    }
+
+    crearCorazones();
+  </script>
+</body>
+</html>
